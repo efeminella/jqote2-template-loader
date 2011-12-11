@@ -29,8 +29,12 @@ Load the "example.tpl" template file.
 ``` javascript
 $.jqoteload( 'example.tpl', function( templates )
 {
+	// create some mock articles...
+	var articles = [ { name: 'Article A', text: 'Articles A test...'},
+					 { name: 'Article B', text: 'Articles B test...'},
+					 { name: 'Article C', text: 'Articles C test...'} ];
     // Render the articles...
-    $('#articles ').jqoteapp( templates.articles_tpl, { 'articles': articles } );
+    $('#articles').jqoteapp( templates.articles_tpl, { 'articles': articles } );
 });
 ```
 
@@ -41,5 +45,6 @@ After the "example.tpl" has been loaded, from another context we can access the 
 var template = $.jqoteret( 'articles_tpl' );
 ```
 
-### Misc
+
+### Note
 [jQote2](http://aefxx.com/jquery-plugins/jqote2/ "Title") needs a CDN, [vote for it](http://cdnjs.uservoice.com/forums/98277-general/suggestions/1805611-jqote2/ "Title").
