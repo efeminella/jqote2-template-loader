@@ -4,7 +4,7 @@ A jQuery Plugin which provides an API for loading external templates.
 ## Examples
 Assume a template file named "example.tpl", which contains the following template definition:
 
-`
+``` html
 <script type="text/html" id="articles_tpl">
 	<![CDATA[
     	<% var article;
@@ -21,22 +21,24 @@ Assume a template file named "example.tpl", which contains the following templat
         <% } %>
 	]]>
 </script>
-`
+```
 
 Load the "example.tpl" template file.
-`
+
+``` javascript
 $.jqoteload( 'example.tpl', function( templates )
 {
     // Render the articles...
     $('#articles ').jqoteapp( templates.articles_tpl, { 'articles': articles } );
 });
-`
+```
 
 After the "example.tpl" has been loaded, from another context we can access the compiled templates via their template element id. In this example "articles_tpl".
 
-`
+``` javascript
 //... within some other context, access the same compiled template
 var template = $.jqoteret( 'articles_tpl' );
-`
+```
 
+### Misc
 [jQote2](http://aefxx.com/jquery-plugins/jqote2/ "Title") needs a CDN, [vote for it](http://cdnjs.uservoice.com/forums/98277-general/suggestions/1805611-jqote2/ "Title").
