@@ -2,7 +2,9 @@
 A jQuery Plugin which provides an API for loading external jQote2 templates.
 
 ## Example
-Using the jQote2 Template Loader plugin is simple. Assume a template file named `"example.tpl"`, which contains the following template definition:
+Using the jQote2 Template Loader plugin is simple. As always, along with `jQuery` and `jQote2`, include the `jquery.jqote2.loader-min.js` script on your page.
+
+Assume a template file named `"example.tpl"`, which contains the following template definition:
 
 ``` html
 <script type="text/html" id="articles_tpl">
