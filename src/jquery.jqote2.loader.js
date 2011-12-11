@@ -54,11 +54,9 @@
 	 */
 	var _jqoteretMulti = function( ids )
 	{
-		var i = 0,
-			n = ids.length,
-			ret = [];
+		var ret = [];
 		
-		for ( i; i < n; i++ )
+		for ( var i = 0, n = ids.length; i < n; i++ )
 		{
 			ret.push( cache[ ids[i] ] );
 		}
