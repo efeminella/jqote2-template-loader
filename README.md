@@ -1,9 +1,8 @@
 #jQote2 Template Loader
 A jQuery Plugin which provides an API for loading external jQote2 templates.
 
-## Examples
-
-Assume a template file named "example.tpl", which contains the following template definition:
+## Example
+Using the jQote2 Template Loader plugin is simple. Assume a template file named `"example.tpl"`, which contains the following template definition:
 
 ``` html
 <script type="text/html" id="articles_tpl">
@@ -24,7 +23,7 @@ Assume a template file named "example.tpl", which contains the following templat
 </script>
 ```
 
-Load the "example.tpl" template file.
+Load the `"example.tpl"` template file:
 
 ``` javascript
 $.jqoteload( 'example.tpl', function( templates )
@@ -38,13 +37,12 @@ $.jqoteload( 'example.tpl', function( templates )
 });
 ```
 
-After the "example.tpl" has been loaded, from another context we can access the compiled templates via their template element id. In this example "articles_tpl".
+After the `"example.tpl"` has been loaded, from another context we can access the compiled templates via their template element id. In this example "articles_tpl".
 
 ``` javascript
 //... within some other context, access the same compiled template
 var template = $.jqoteret( 'articles_tpl' );
-```
-
+```  
 
 ### Note
 [jQote2](http://aefxx.com/jquery-plugins/jqote2/ "Title") needs a CDN, [vote for it](http://cdnjs.uservoice.com/forums/98277-general/suggestions/1805611-jqote2/ "Title").
