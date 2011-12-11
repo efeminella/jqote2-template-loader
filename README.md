@@ -25,12 +25,15 @@ Assume a template file named "example.tpl" which contains the following template
 
 Load the "example.tpl" template file.
 ``` javascript
+// load "example.tpl"
 $.jqoteload( 'example.tpl', function( templates )
 {
+    // create some mock articles to render from the "articles_tpl"
 	var articles = [ {name: "Article A", comment: "This is Article A..." },
 					 {name: "Article B", comment: "This is Article B..." },
 					 {name: "Article C", comment: "This is Article C..." } ];
-
+	 
+	// Render the articles...
     $('#articles ').jqoteapp( templates.articles_tpl, { 'articles': articles } );
 });
 ```
