@@ -1,7 +1,8 @@
 #jQote2 Template Loader
-A jQuery Plugin which provides an API for loading external templates.
+A jQuery Plugin which provides an API for loading external jQote2 templates.
 
 ## Examples
+
 Assume a template file named "example.tpl", which contains the following template definition:
 
 ``` html
