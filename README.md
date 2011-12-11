@@ -4,7 +4,7 @@ A jQuery Plugin which provides an API for loading external templates and, retrie
 ## Examples
 Assume a template file named "example.tpl" which contains the following template:
 
-``` javascript
+``` html
 <script type="text/html" id="articles_tpl">
 	<![CDATA[
     	<% var article;
@@ -23,7 +23,7 @@ Assume a template file named "example.tpl" which contains the following template
 </script>
 ```
 
-Load the "example.tpl" template file
+Load the "example.tpl" template file.
 ``` javascript
 // load "example.tpl"
 $.jqoteload( 'example.tpl', function( templates )
@@ -34,7 +34,7 @@ $.jqoteload( 'example.tpl', function( templates )
 					 {name: "Article C", comment: "This is Article C..." } ];
 	 
 	// Render the articles...
-    $('#articles ').jqoteapp( templates.category_list, { 'articles': articles } );
+    $('#articles ').jqoteapp( templates.articles_tpl, { 'articles': articles } );
 });
 ```
 
