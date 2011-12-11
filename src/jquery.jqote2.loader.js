@@ -40,7 +40,7 @@
 	 * 
 	 * @param success {Function} 
 	 *    A callback function which accepts either an object (when the 
-	 * 	  opts.precompiled properrty == true) or, a result from jQuery
+	 *    opts.precompiled properrty == true) or, a result from jQuery
 	 *    get();. The success callback is invoked either after the given
 	 *    template has been loaded and preprocessed, or once the template 
 	 *    has been loaded (if opts.preprocess == false).
@@ -145,10 +145,10 @@
 	};
 	
 	/*
-	 * 
-	 *
-	 *
-	 *
+	 * Clients can invoke jqoteret with a single template element
+	 * id, or an Array of template element ids. When an Array of  
+	 * template ids is passed, _jqoteretMulti retrieves each and
+	 * returns all matches.
 	 */
 	var _jqoteretMulti = function( ids )
 	{
@@ -163,6 +163,8 @@
 		return ret;
 	};
 	
+	// We extend the jQuery object itself with two additional methods,
+	// the define the jqote2 loader API
 	$.extend( { 
 		jqoteload : jqoteload,
 		jqoteret  : jqoteret
