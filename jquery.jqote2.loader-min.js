@@ -1,2 +1,3 @@
+/* https://github.com/efeminella/jqote2-template-loader/blob/master/LICENSE.txt */
 (function(e){var i=Error("A template URL must be provided."),j=Object.prototype,f={},c,g,k=function(a){var a=e(a).filter(c.element||"script"),d,b,h;if(a){f=c.reset?{}:f;for(b=0,h=a.length;b<h;b++)d=a[b],f[d.id]=e.jqotec(d)}g(f);g=c=null};e.extend({jqoteload:function(a,d){var b;if(a||a.url)return c=null,b={preprocess:!0,reset:!1,element:"script"},"object"===typeof a?c=e.extend(b,a):"string"===typeof a&&(c=e.extend(b,{url:a})),g=d,b=e.get(c.url).success(c.preprocess?k:d);throw i;},jqoteret:function(a){if("[object Array]"===
 j.toString.call(a)){for(var d=[],b=0,c=a.length;b<c;b++)d.push(f[a[b]]);a=d}else a=f[a];return a}})})(jQuery);
