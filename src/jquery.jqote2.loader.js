@@ -114,7 +114,8 @@
 	 * Preprocesses each template contained within the templates
 	 * file (specified by opts or opts.url). Each template id is
 	 * used as a key and the compiled template is the value of
-	 * the key, and the resulting object is returned.
+	 * the key. An object containing each template id key and 
+	 * compiled template is returned.
 	 * 
 	 * @return {Object} An Object containing each template where
 	 * the id of each template is used as a key and the compiled 

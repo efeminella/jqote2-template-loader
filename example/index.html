@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>index</title>
+		<script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+		<script src="../src/jquery.jqote2.min.js"></script>
+		<script src="../src/jquery.jqote2.loader.js"></script>
+		<script type="text/javascript">
+			
+			$(document).ready( function() 
+			{
+				var templates = {};
+				
+				$.jqoteload( 'templates.html.tpl', function( tpls )
+				{
+					templates = tpls;
+				});
+
+			    $('a.render').click( function() 
+			    {
+			    	var categories = [ {name: "Category A", comment: "This is Test A...", id: 0 },
+			    					   {name: "Category B", comment: "This is Test B...", id: 1 },
+			    					   {name: "Category C", comment: "This is Test C...", id: 2 } ];
+			    					   
+			    	var tpl_data = { categories: categories };
+			    	 
+			        $('#content > ul ').jqoteapp( templates.category_list, tpl_data );
+			        $('#content > article').jqoteapp( templates.category_sections, tpl_data );
+			    });
+			});
+		</script>
+	</head>
+	<body>
+		<nav>
+			<a class="render" href="#">Render Template</a>
+		</nav>
+		<div id="content">
+			<ul></ul>
+			<article></article>
+		</div>
+	</body>
+</html>
