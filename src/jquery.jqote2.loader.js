@@ -1,10 +1,69 @@
+/* jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, 
+   undef:true, curly:true, browser:true, jquery:true, indent:4, maxerr:50, newcap:true */
+
 ( function( $ )
 {
+	"use strict";
+	
 	var error = new Error( "A template URL must be provided." ),
 	    obj   = Object.prototype,
 	    cache = {},
 	    options,
 	    callback;
+	
+	/*
+	 * Preprocesses each template contained within the templates
+	 * file (specified by opts or opts.url). Each template id is
+	 * used as a key and the compiled template is the value of
+	 * the key. An object containing each template id key and 
+	 * compiled template is returned.
+	 * 
+	 * @return {Object} An Object containing each template where
+	 * the id of each template is used as a key and the compiled 
+	 * template is the value of the key, and the resulting object 
+	 * is returned.
+	 */
+	var _preprocess = function( file ) 
+	{
+		var templates = $( file ).filter( options.element || 'script' ),
+			template,
+			i,
+			n;
+		
+		if ( templates ) 
+		{
+			cache = options.reset ? {} : cache;
+			
+			for ( i = 0, n = templates.length; i < n; i++ ) 
+			{	
+				template = templates[i];
+				cache[ template.id ] = $.jqotec( template );
+			}
+		}
+		callback( cache );
+		
+		options  = null;
+		callback = null;
+	};
+	
+	/*
+	 * Clients can invoke jqoteret with a single template element
+	 * id, or an Array of template element ids. When an Array of  
+	 * template ids is passed, _jqoteretMulti retrieves each and
+	 * returns all matches.
+	 */
+	var _jqoteretMulti = function( ids )
+	{
+		var i = 0,
+			n = ids.length,
+			ret = [];
+		
+		for ( i; i < n; i++ )
+		{
+			ret.push( cache[ ids[i] ] );
+		}
+		return ret;
+	};
 	
 	/*
 	 * Loads an external templates file via jQuery.get();. Accordingly, 
@@ -68,8 +127,7 @@
 				options = $.extend( defaults, {url: opts} );
 			}
 			callback = success;
-			request  = $.get( options.url )
-				 	    .success( options.preprocess ? _preprocess : success );
+			request  = $.get( options.url ).success( options.preprocess ? _preprocess : success );
 				 
 			return request;	
 		}
@@ -108,60 +166,6 @@
 			return _jqoteretMulti( id );
 		}
 		return cache[ id ];
-	};
-	
-	/*
-	 * Preprocesses each template contained within the templates
-	 * file (specified by opts or opts.url). Each template id is
-	 * used as a key and the compiled template is the value of
-	 * the key. An object containing each template id key and 
-	 * compiled template is returned.
-	 * 
-	 * @return {Object} An Object containing each template where
-	 * the id of each template is used as a key and the compiled 
-	 * template is the value of the key, and the resulting object 
-	 * is returned.
-	 */
-	var _preprocess = function( file ) 
-	{
-		var templates = $( file ).filter( options.element || defaults.element ),
-			template,
-			i,
-			n;
-		
-		if ( templates ) 
-		{
-			cache = options.reset ? {} : cache;
-			
-			for ( i = 0, n = templates.length; i < n; i++ ) 
-			{	
-				template = templates[i];
-				cache[ template.id ] = $.jqotec( template );
-			}
-		};
-		callback( cache );
-		
-		options  = null;
-		callback = null;
-	};
-	
-	/*
-	 * Clients can invoke jqoteret with a single template element
-	 * id, or an Array of template element ids. When an Array of  
-	 * template ids is passed, _jqoteretMulti retrieves each and
-	 * returns all matches.
-	 */
-	var _jqoteretMulti = function( ids )
-	{
-		var i = 0,
-			n = ids.length,
-			ret = [];
-		
-		for ( i; i < n; i++ )
-		{
-			ret.push( cache[ ids[i] ] );
-		}
-		return ret;
 	};
 	
 	// We extend the jQuery object itself with two additional methods,
