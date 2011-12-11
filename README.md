@@ -9,6 +9,4 @@ $.jqoteload( 'templates.html.tpl', function( templates )
 });
 ```
 
-### References
-[jQote2](http://aefxx.com/jquery-plugins/jqote2/ "Title").
-jQote2 needs a CDN, [vote for it](http://cdnjs.uservoice.com/forums/98277-general/suggestions/1805611-jqote2/ "Title").
+[jQote2](http://aefxx.com/jquery-plugins/jqote2/ "Title") needs a CDN, [vote for it](http://cdnjs.uservoice.com/forums/98277-general/suggestions/1805611-jqote2/ "Title").
