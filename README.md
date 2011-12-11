@@ -1,7 +1,8 @@
 #jQote2 Template Loader
 A jQuery Plugin which provides an API for loading external templates and, retrieving the compiled templates.
 
-Assume a template names "example.tpl" which contains the following template:
+## Examples
+Assume a template file named "example.tpl" which contains the following template:
 
 ``` javascript
 <script type="text/html" id="articles_tpl">
@@ -38,6 +39,7 @@ $.jqoteload( 'example.tpl', function( templates )
 ```
 
 After the "example.tpl" has been loaded, from another context we can access the compiled templates via their template element id. In this example "articles_tpl".
+``` javascript
 //... within some other context, access the same compiled template
 var template = $.jqoteret( 'articles_tpl' );
 ```
