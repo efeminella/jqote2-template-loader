@@ -37,7 +37,7 @@ $.jqoteload( 'example.tpl', function( templates )
 });
 ```
 
-After the `"example.tpl"` has been loaded, from another context we can access the compiled templates via their template element id. In this example "articles_tpl".
+After the `"example.tpl"` has been loaded, from another context we can access the compiled templates via their template element id. In this example `"articles_tpl"`.
 
 ``` javascript
 //... within some other context, access the same compiled template
