@@ -86,7 +86,8 @@
 	 *    preprocess: {Boolean} specifies if the loaded templates file 
 	 *    is to be preprocessed internally by $.jqoteload(), and have
 	 *    the resulting precompiled templates returned via an invocation
-	 *    of the success callback argument.
+	 *    of the success callback argument. When false, the template file
+	 *    contents will be returned unmodified.
 	 * 
 	 *    element: {String} The name of the HTML elements which define 
 	 *    templates in the loaded templates file. This is an optional 
@@ -167,7 +168,7 @@
 	};
 	
 	// We extend the jQuery object itself with two additional methods,
-	// the define the jqote2 loader API
+	// these define the jqote2 loader API
 	$.extend( { 
 		jqoteload : jqoteload,
 		jqoteret  : jqoteret
