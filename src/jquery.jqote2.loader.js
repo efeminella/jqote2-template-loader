@@ -86,7 +86,8 @@
 	 *    preprocess: {Boolean} specifies if the loaded templates file 
 	 *    is to be preprocessed internally by $.jqoteload(), and have
 	 *    the resulting precompiled templates returned via an invocation
-	 *    of the success callback argument.
+	 *    of the success callback argument. When false, the template file
+	 *    contents will be returned unmodified.
 	 * 
 	 *    element: {String} The name of the HTML elements which define 
 	 *    templates in the loaded templates file. This is an optional 
@@ -97,9 +98,9 @@
 	 * 
 	 * @param success {Function} 
 	 *    A callback function which accepts either an object (when the 
-	 *    opts.precompiled properrty == true) or, a result from jQuery
+	 *    opts.precompiled property == true) or, a result from jQuery
 	 *    get();. The success callback is invoked either after the given
-	 *    template has been loaded and preprocessed, or once the template 
+	 *    template has been loaded and pre-processed, or once the template 
 	 *    has been loaded (if opts.preprocess == false).
 	 * 
 	 */
@@ -154,7 +155,7 @@
 	 *    $.jqoteload
 	 * 
 	 *    {Array} An Array of String ids of templates previously loaded via 
-	 *    $.jqoteload
+	 *    $._jqoteret
 	 *  
 	 */
 	var _jqoteret = function( id )
