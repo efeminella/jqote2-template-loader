@@ -12,7 +12,7 @@
 	    callback;
 	
 	/*
-	 * Preprocesses each template contained within the templates
+	 * Pre-processes each template contained within the templates
 	 * file (specified by opts or opts.url). Each template id is
 	 * used as a key and the compiled template is the value of
 	 * the key. An object containing each template id key and 
@@ -103,7 +103,7 @@
 	 *    has been loaded (if opts.preprocess == false).
 	 * 
 	 */
-	var jqoteload = function( opts, success ) 
+	var _jqoteload = function( opts, success ) 
 	{	
 		var request,
 			defaults;
@@ -157,7 +157,7 @@
 	 *    $.jqoteload
 	 *  
 	 */
-	var jqoteret = function( id )
+	var _jqoteret = function( id )
 	{
 		if ( obj.toString.call( id ) === "[object Array]" )
 		{
@@ -167,9 +167,9 @@
 	};
 	
 	// We extend the jQuery object itself with two additional methods,
-	// the define the jqote2 loader API
+	// which define the jqote2 loader API.
 	$.extend( { 
-		jqoteload : jqoteload,
-		jqoteret  : jqoteret
+		jqoteload : _jqoteload,
+		jqoteret  : _jqoteret
 	});
 }( jQuery ));

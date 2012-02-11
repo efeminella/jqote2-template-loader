@@ -32,10 +32,10 @@ $(document).ready( function()
 			setTimeout( function() 
 			{
 				ok ( true, "Templates loaded" );
-				ok ( templates != null, "compiled templates returned" );
+				ok ( templates !== null, "compiled templates returned" );
 				ok ( templates[ templateId1 ] instanceof Function, "Expecting compiled template '#script_template_1' to have been returned." );
 				ok ( templates[ templateId2 ] instanceof Function, "Expecting compiled template '#script_template_2' to have been returned." );
-				ok ( templates[ templateId3 ] == undefined, "Expecting template '#xml_template_1' to have been omitted." );
+				ok ( typeof templates[ templateId3 ] === 'undefined', "Expecting template '#xml_template_1' to have been omitted." );
 				start();
 			}, 13 );
 		});
@@ -54,8 +54,8 @@ $(document).ready( function()
 				ok ( true, "Templates loaded" );
 				ok ( templates !== null, "Expecting compiled templates to have been returned." );
 				ok ( templates[ templateId3 ] instanceof Function, "Expecting compiled template '#xml_template_1' to have been returned." );
-				ok ( templates[ templateId1 ] == undefined, "Expecting '#script_template_1' template to have been omitted." );
-				ok ( templates[ templateId2 ] == undefined, "Expecting '#script_template_2' template to have been omitted." );
+				ok ( typeof templates[ templateId1 ] === 'undefined', "Expecting '#script_template_1' template to have been omitted." );
+				ok ( typeof templates[ templateId2 ] === 'undefined', "Expecting '#script_template_2' template to have been omitted." );
 				start();
 			}, 13 );
 		});
@@ -89,8 +89,7 @@ $(document).ready( function()
 	
 	asyncTest( "jQuery.jqoteret(); Test expected template retrieval", function()
 	{	
-		var expected,
-			actual;
+		var expected, actual;
 				
 		expect( 2 );
 		

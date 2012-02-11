@@ -39,4 +39,3 @@
 <template id="xml_template_1">
 	<a href="<%= item.url %>"><%= item.name %></a>
 </template>
-
