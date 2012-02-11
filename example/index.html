@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>jQote2 Template Loader Example</title>
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="https://raw.github.com/aefxx/jQote2/master/jquery.jqote2.min.js"></script>
+		<script src="../jquery.jqote2.loader-min.js"></script>
+		<script>
+			$( function()
+			{
+				$.jqoteload( 'example.tpl', function( templates )
+				{
+				    // create some mock articles...
+				    var articles = [ { name: 'Article A', text: 'Articles A test...'},
+				                     { name: 'Article B', text: 'Articles B test...'},
+				                     { name: 'Article C', text: 'Articles C test...'} ];
+				    // Render the articles...
+				    $( '#items' ).jqoteapp( templates.articles_tpl, { 'articles': articles } );
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="items"></div>
+	</body>
+</html>

@@ -18,8 +18,8 @@ For this example, assume a file named `"example.tpl"` exists, which contains the
 				<header>
 					<h1><%= article.name %></h1>
 				</header>
-				<section><p><%= article.text %></p></section>
-			<article>
+				<p><%= article.text %></p>
+			</article>
         <% } %>
 	]]>
 </script>
@@ -45,6 +45,8 @@ After `"example.tpl"` has been loaded, from another context we can access the co
 //... within some other context, access the same compiled template
 var template = $.jqoteret( 'articles_tpl' );
 ```  
+
+The above example can be found in the examples directory.
 
 ### Note
 [jQote2](http://aefxx.com/jquery-plugins/jqote2/ "Title") needs a CDN, [vote for it :)](http://cdnjs.uservoice.com/forums/98277-general/suggestions/1805611-jqote2/ "Title").
