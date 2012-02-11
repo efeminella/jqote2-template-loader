@@ -106,8 +106,7 @@
 	 */
 	var _jqoteload = function( opts, success ) 
 	{	
-		var request,
-			defaults;
+		var request, defaults;
 		
 		if ( opts || opts.url )
 		{
