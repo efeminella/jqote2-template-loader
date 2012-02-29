@@ -9,9 +9,9 @@ For this example, assume a file named `"example.tpl"` exists, which contains the
 ``` html
 <script type="text/html" id="articles_tpl">
 	<![CDATA[
-    	<% var article;
+    	<% var article, i, n;
     	   
-    	   for ( var i = 0, n = this.articles.length; i < n; i++ ) {
+    	   for ( i = 0, n = this.articles.length; i < n; i++ ) {
 			     article = this.articles[i]; 
 		 %>
 			<article>
