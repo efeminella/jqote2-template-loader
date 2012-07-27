@@ -1,7 +1,7 @@
 /* jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, 
    undef:true, curly:true, browser:true, jquery:true, indent:4, maxerr:50, newcap:true */
 
-( function( $ ){
+;(function($){
 	
 	"use strict";
 	
@@ -27,11 +27,12 @@
 		var templates = $(file).filter(options.element || 'script')
 		  , template
 		  , i,n;
+		  
 		if (templates) {
 			cache = options.reset ? {} : cache;
 			for (i = 0, n = templates.length; i < n; i++) {	
-				template = templates[i];
-				cache[ template.id ] = $.jqotec( template );
+				template  = templates[i];
+				cache[template.id] = $.jqotec(template);
 			}
 		}
 		callback(cache);
@@ -48,7 +49,7 @@
 		var ret = []
 		  , n = ids.length
 		  , i = 0;
-		for ( ; i < n; i++) {
+		for (; i < n; i++) {
 			ret.push( cache[ids[i]] );
 		}
 		return ret;
@@ -95,10 +96,8 @@
 	 *    has been loaded (if opts.preprocess == false).
 	 * 
 	 */
-	var _jqoteload = function(opts, success) {	
-		
+	var _jqoteload = function(opts, success) {
 		var defaults, type;
-		
 		if (opts || opts.url) {
 			options  = null;
 			type = typeof opts;
@@ -142,10 +141,7 @@
 	 *  
 	 */
 	var _jqoteret = function(id) {
-		if (obj.toString.call(id) === "[object Array]") {
-			return _jqoteretMulti(id);
-		}
-		return cache[id];
+		return obj.toString.call(id) === "[object Array]" ? _jqoteretMulti(id) : cache[id];
 	};
 	
 	// We extend the jQuery object itself with two additional methods,
@@ -154,4 +150,4 @@
 		'jqoteload': _jqoteload
 	  , 'jqoteret' : _jqoteret
 	});
-}( jQuery ));
+}(jQuery));
