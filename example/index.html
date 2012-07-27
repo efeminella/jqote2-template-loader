@@ -8,16 +8,14 @@
 		<script src="https://raw.github.com/aefxx/jQote2/master/jquery.jqote2.min.js"></script>
 		<script src="../jquery.jqote2.loader-min.js"></script>
 		<script>
-			$( function()
-			{
-				$.jqoteload( 'example.tpl', function( templates )
-				{
+			$( function(){
+				$.jqoteload('example.tpl', function(templates){
 				    // create some mock articles...
 				    var articles = [ { name: 'Article A', text: 'Articles A test...'},
 				                     { name: 'Article B', text: 'Articles B test...'},
 				                     { name: 'Article C', text: 'Articles C test...'} ];
 				    // Render the articles...
-				    $( '#items' ).jqoteapp( templates.articles_tpl, { 'articles': articles } );
+				    $('#items').jqoteapp(templates.articles_tpl, { 'articles': articles });
 				});
 			});
 		</script>

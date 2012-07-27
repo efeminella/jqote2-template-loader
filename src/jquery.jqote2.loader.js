@@ -1,17 +1,17 @@
 /* jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, 
    undef:true, curly:true, browser:true, jquery:true, indent:4, maxerr:50, newcap:true */
 
-( function( $ )
-{
+( function( $ ){
+	
 	"use strict";
 	
-	var error = new Error( "A template URL must be provided." ),
-	    obj   = Object.prototype,
-	    cache = {},
-	    options,
-	    callback;
+	var error = new Error( "A template URL must be provided." )
+	  , obj   = Object.prototype
+	  , cache = {}
+	  , options
+	  , callback;
 	
-	/*
+	/**
 	 * Pre-processes each template contained within the templates
 	 * file (specified by opts or opts.url). Each template id is
 	 * used as a key and the compiled template is the value of
@@ -23,47 +23,38 @@
 	 * template is the value of the key, and the resulting object 
 	 * is returned.
 	 */
-	var _preprocess = function( file ) 
-	{
-		var templates = $( file ).filter( options.element || 'script' ),
-			template,
-			i,
-			n;
-		
-		if ( templates ) 
-		{
+	var _preprocess = function(file) {
+		var templates = $(file).filter(options.element || 'script')
+		  , template
+		  , i,n;
+		if (templates) {
 			cache = options.reset ? {} : cache;
-			
-			for ( i = 0, n = templates.length; i < n; i++ ) 
-			{	
+			for (i = 0, n = templates.length; i < n; i++) {	
 				template = templates[i];
 				cache[ template.id ] = $.jqotec( template );
 			}
 		}
-		callback( cache );
-		
-		options  = null;
-		callback = null;
+		callback(cache);
+		options = callback = null;
 	};
 	
-	/*
+	/**
 	 * Clients can invoke jqoteret with a single template element
 	 * id, or an Array of template element ids. When an Array of  
 	 * template ids is passed, _jqoteretMulti retrieves each and
 	 * returns all matches.
 	 */
-	var _jqoteretMulti = function( ids )
-	{
-		var ret = [];
-		
-		for ( var i = 0, n = ids.length; i < n; i++ )
-		{
-			ret.push( cache[ ids[i] ] );
+	var _jqoteretMulti = function(ids) {
+		var ret = []
+		  , n = ids.length
+		  , i = 0;
+		for ( ; i < n; i++) {
+			ret.push( cache[ids[i]] );
 		}
 		return ret;
 	};
 	
-	/*
+	/**
 	 * Loads an external templates file via jQuery.get();. Accordingly, 
 	 * the loading of a template file is subject to the jQuery.get();
 	 * API. See: http://api.jquery.com/jQuery.get/ for implementation
@@ -104,38 +95,31 @@
 	 *    has been loaded (if opts.preprocess == false).
 	 * 
 	 */
-	var _jqoteload = function( opts, success ) 
-	{	
-		var request, defaults;
+	var _jqoteload = function(opts, success) {	
 		
-		if ( opts || opts.url )
-		{
+		var defaults, type;
+		
+		if (opts || opts.url) {
 			options  = null;
+			type = typeof opts;
 			defaults = {
-				preprocess : true,
-				reset      : false,
-				element    : 'script'
+				'preprocess' : true
+			  , 'reset'      : false
+			  , 'element'    : 'script'
 			};
-			if ( typeof opts === 'object' )
-			{
+			if (type === 'object') {
 				options = $.extend( defaults, opts );	
 			}
-			else if ( typeof opts === 'string' )
-			{
+			else if (type === 'string') {
 				options = $.extend( defaults, {url: opts} );
 			}
-			callback = success;
-			request  = $.get( options.url ).success( options.preprocess ? _preprocess : success );
-				 
-			return request;	
+			callback = success; 
+			return $.get( options.url ).success( options.preprocess ? _preprocess : success );	
 		}
-		else
-		{
-			throw error;
-		}
+		throw error;
 	};
 	
-	/*
+	/**
 	 * Provides a convenience method for accessing each compiled template
 	 * via its id. By default, an Object containing each compiled template
 	 * is passed to the callback specified to $.jqoteload. This method is
@@ -157,19 +141,17 @@
 	 *    $._jqoteret
 	 *  
 	 */
-	var _jqoteret = function( id )
-	{
-		if ( obj.toString.call( id ) === "[object Array]" )
-		{
-			return _jqoteretMulti( id );
+	var _jqoteret = function(id) {
+		if (obj.toString.call(id) === "[object Array]") {
+			return _jqoteretMulti(id);
 		}
-		return cache[ id ];
+		return cache[id];
 	};
 	
 	// We extend the jQuery object itself with two additional methods,
 	// which define the jqote2 loader API.
 	$.extend( { 
-		jqoteload : _jqoteload,
-		jqoteret  : _jqoteret
+		'jqoteload': _jqoteload
+	  , 'jqoteret' : _jqoteret
 	});
 }( jQuery ));
